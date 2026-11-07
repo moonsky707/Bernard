@@ -386,6 +386,13 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
 .lim2 .card .d{font-size:17px;color:var(--text-2);margin-top:6px;line-height:1.55}
 .lim2 .card.fut{background:var(--pos-wash);border-color:rgba(57,135,229,.4)}
 
+.vhint{margin-top:12px;font-size:14.5px;color:var(--text-2);display:flex;align-items:center;gap:8px}
+.vhint .key{display:inline-grid;place-items:center;min-width:26px;height:22px;padding:0 6px;border-radius:6px;border:1px solid var(--line-2);background:var(--card-2);font-weight:700;color:var(--text);font-size:13px}
+.vsum{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+.vsum li{font-size:15.5px;color:var(--text-2);line-height:1.45;display:flex;gap:10px}
+.vsum li b{flex:none;width:40px;color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums}
+.play-trigger{position:absolute;width:1px;height:1px;overflow:hidden}
+
 @media print{#toolbar,#toast,#edit-banner{display:none!important}}
 </style>
 </head>
@@ -393,12 +400,10 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
 <div id="edit-banner">편집 모드 · 캡처: <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> 후 영상 슬라이드에서 <kbd>Ctrl</kbd>+<kbd>V</kbd> (또는 이미지 끌어놓기) · 설명 클릭해 수정 · <kbd>E</kbd> 로 종료</div>
 <div id="toolbar">
   <button type="button" data-act="fs" title="전체화면 (F)">전체화면</button>
-  <button type="button" data-act="edit" title="영상 주소·캡처 편집 (E)">편집 E</button>
-  <button type="button" data-act="save" title="캡처와 영상 설정을 담은 HTML 파일로 저장">캡처 포함 저장</button>
-  <button type="button" data-act="notes" title="발표자 노트 창 (S)">발표자 노트 S</button>
+    <button type="button" data-act="notes" title="발표자 노트 창 (S)">발표자 노트 S</button>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="deck-state">{}</script>
+<script type="application/json" id="deck-state">{"caps": {}, "videos": {"gitlab": {"url": "https://www.youtube.com/watch?v=ryhGX4KqFr8", "start": "1:33", "end": "2:29", "title": "CNBC · GitLab 상장일, 창업자 인터뷰 (2021.10)"}, "wework": {"url": "https://www.youtube.com/watch?v=p3q5m0ILTfk", "start": "1:59", "end": "3:22", "title": "WSJ · How WeWork Went From $47B Startup to Bankrupt (2023)"}}}</script>
 
 <div class="reveal">
 <div class="slides">
@@ -514,11 +519,13 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
             <label>끝<input data-k="end" placeholder="3:05"></label>
           </div>
         </div>
-        <div class="caps">
-          <figure class="cap empty" data-cap="gitlab-1"><div class="ci"></div><span class="ph">캡처 1<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명 (예: 00:42 상장 타종)"></figcaption><span class="x" title="삭제">×</span></figure>
-          <figure class="cap empty" data-cap="gitlab-2"><div class="ci"></div><span class="ph">캡처 2<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명"></figcaption><span class="x" title="삭제">×</span></figure>
-          <figure class="cap empty" data-cap="gitlab-3"><div class="ci"></div><span class="ph">캡처 3<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명"></figcaption><span class="x" title="삭제">×</span></figure>
-        </div>
+        <p class="vhint"><span class="key">→</span> 다음 키를 누르면 재생 · 영상 1:33–2:29 (약 1분)</p>
+        <ul class="vsum">
+          <li><b>1:33</b>“원격 전용 조직이 경쟁력이 됐나?”라는 질문</li>
+          <li><b>1:47</b>어디에 살든 최고의 인재를 채용 — 65개국 팀원</li>
+          <li><b>2:12</b>온라인으로 일하니 고객이 개발 이슈를 직접 지켜본다</li>
+        </ul>
+        <span class="fragment play-trigger" aria-hidden="true"></span>
       </div>
       <div class="aside">
         <div class="moment"><div class="dt">2017 · 위기의 순간</div><div class="h">DB 삭제 사고, 복구를 생중계</div><div class="d">최대 5,000명+ 시청 → 비난보다 존중</div></div>
@@ -526,9 +533,9 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
         <div class="keymsg">고객은 ‘장애 없는 회사’보다 <b>‘숨기지 않는 회사’</b>를 믿는다</div>
       </div>
     </div>
-    <p class="src">출처: GitLab Postmortem(2017.2.10) · Databarracks(2017) · Bloomberg(2021.10.14) · Forbes(2021.10) · Sifted(2022.12.14)</p>
+    <p class="src">영상: CNBC Television, “GitLab goes public on Nasdaq a $10 billion IPO”(2021.10) · 출처: GitLab Postmortem(2017.2.10) · Bloomberg(2021.10.14) · Sifted(2022.12.14)</p>
   </div>
-  <aside class="notes">이 투명성이 브랜드로 바뀐 두 장면입니다. 2017년 엔지니어 실수로 운영 DB가 지워졌을 때 GitLab은 복구 과정을 유튜브로 생중계했고, 최대 5천 명 넘게 지켜봤습니다. 반응은 비난보다 존중이었습니다. 2021년 상장일에는 나스닥 최초로 상장일 전 과정을 생중계했고, 65개국 팀원이 화상으로 참여했습니다. 첫날 주가는 35% 올랐습니다. [영상 재생] 고객은 장애가 없는 회사보다 숨기지 않는 회사를 믿습니다. (영상 제외 40초)</aside>
+  <aside class="notes">이 투명성이 브랜드로 바뀐 두 장면입니다. 2017년 엔지니어 실수로 운영 DB가 지워졌을 때 GitLab은 복구 과정을 유튜브로 생중계했고, 최대 5천 명 넘게 지켜봤습니다. 반응은 비난보다 존중이었습니다. 2021년 상장일에는 나스닥 최초로 상장일 전 과정을 생중계했고, 65개국 팀원이 화상으로 참여했습니다. 첫날 주가는 35% 올랐습니다. 상장 당일 창업자가 CNBC에서 원격 조직에 대해 말한 장면을 1분 보겠습니다. [→ 키: 영상 재생, 1:33–2:29에서 자동 정지] 어디서든 최고의 인재를 뽑고, 고객이 개발 이슈를 직접 지켜본다는 말이 핵심입니다. 고객은 장애가 없는 회사보다 숨기지 않는 회사를 믿습니다. (영상 제외 40초)</aside>
 </section>
 
 <!-- 6. GitLab 2026 -->
@@ -615,11 +622,14 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
             <label>끝<input data-k="end" placeholder="4:30"></label>
           </div>
         </div>
-        <div class="caps">
-          <figure class="cap empty" data-cap="wework-1"><div class="ci"></div><span class="ph">캡처 1<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명 (예: 02:15 S-1 공개 보도)"></figcaption><span class="x" title="삭제">×</span></figure>
-          <figure class="cap empty" data-cap="wework-2"><div class="ci"></div><span class="ph">캡처 2<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명"></figcaption><span class="x" title="삭제">×</span></figure>
-          <figure class="cap empty" data-cap="wework-3"><div class="ci"></div><span class="ph">캡처 3<br>Ctrl+V · 끌어놓기 · 클릭</span><figcaption data-ph="장면 설명"></figcaption><span class="x" title="삭제">×</span></figure>
-        </div>
+        <p class="vhint"><span class="key">→</span> 다음 키를 누르면 재생 · 영상 1:59–3:22 (약 1분 20초)</p>
+        <ul class="vsum">
+          <li><b>1:59</b>상장 준비로 숫자 공개 — 창업 이후 한 번도 흑자 없음</li>
+          <li><b>2:16</b>IPO 서류 속 이해상충: 창업자 소유 건물을 회사에 임대</li>
+          <li><b>2:37</b>즉흥적 리더십 — “매년 하위 20% 해고” 같은 인사</li>
+          <li><b>3:10</b>IPO 철회, 창업자 사임</li>
+        </ul>
+        <span class="fragment play-trigger" aria-hidden="true"></span>
       </div>
       <div class="aside">
         <div class="moment"><div class="dt">관전 포인트</div>
@@ -632,9 +642,9 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
         <div class="keymsg neg">마케팅이 만든 ‘유니콘’은 <b>내부가 공개되는 순간</b> 다시 가격이 매겨진다</div>
       </div>
     </div>
-    <p class="src">출처: The We Company S-1(2019.8.14) · Reuters(2023.11)</p>
+    <p class="src">영상: The Wall Street Journal, “How WeWork Went From $47B Startup to Bankrupt Penny Stock”(2023.11) · 출처: The We Company S-1(2019.8.14)</p>
   </div>
-  <aside class="notes">영상으로 그 순간을 보겠습니다. 관전 포인트는 세 가지입니다. 비전의 언어와 숫자의 괴리, 창업자 개인 브랜드가 기업 브랜드를 삼키는 장면, 그리고 투자자에서 직원, 고객으로 번진 신뢰 붕괴의 순서입니다. [영상 재생] 마케팅이 만든 유니콘은 내부가 공개되는 순간 다시 가격이 매겨집니다. (영상 제외 25초)</aside>
+  <aside class="notes">영상으로 그 순간을 보겠습니다. 관전 포인트는 세 가지입니다. 비전의 언어와 숫자의 괴리, 창업자 개인 브랜드가 기업 브랜드를 삼키는 장면, 그리고 투자자에서 직원, 고객으로 번진 신뢰 붕괴의 순서입니다. 월스트리트저널 영상으로 상장 서류가 공개된 뒤를 보겠습니다. [→ 키: 영상 재생, 1:59–3:22에서 자동 정지] 창업자 소유 건물 임대, 매년 하위 20% 해고 같은 즉흥적 인사가 서류와 함께 드러났습니다. 마케팅이 만든 유니콘은 내부가 공개되는 순간 다시 가격이 매겨집니다. (영상 제외 25초)</aside>
 </section>
 
 <!-- 10. 비교 -->
@@ -812,7 +822,7 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
     return {
       id: yt.id, start: start, end: end, title: v.title || '',
       watch: 'https://www.youtube.com/watch?v=' + yt.id + (start ? '&t=' + start + 's' : ''),
-      embed: 'https://www.youtube-nocookie.com/embed/' + yt.id + '?autoplay=1&rel=0&playsinline=1' + (start ? '&start=' + start : '') + (end ? '&end=' + end : '')
+      embed: function (auto) { return 'https://www.youtube-nocookie.com/embed/' + yt.id + '?autoplay=' + (auto ? 1 : 0) + '&rel=0&playsinline=1&modestbranding=1' + (start ? '&start=' + start : '') + (end ? '&end=' + end : ''); }
     };
   }
 
@@ -826,7 +836,7 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
     if (info) {
       title.textContent = v.title || 'YouTube 영상';
       var range = (info.start ? fmt(info.start) : '0:00') + (info.end ? ' – ' + fmt(info.end) : ' 부터');
-      meta.textContent = range + (HOSTED ? ' · 클릭하면 이 화면에서 재생' : ' · 클릭하면 새 창에서 재생');
+      meta.textContent = range + (HOSTED ? ' · 다음 키(→)로 재생' : ' · 클릭하면 새 창에서 재생');
     } else {
       title.textContent = vid === 'gitlab' ? 'GitLab 영상' : 'WeWork 영상';
       meta.textContent = '편집 모드(E)에서 YouTube 주소를 입력하세요';
@@ -871,18 +881,24 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
   function stopVideo(sec) {
     if (!sec) return; var f = sec.querySelector('.stage iframe'); if (f) f.remove();
   }
+  function loadPlayer(sec, auto) {
+    var info = videoInfo(sec.getAttribute('data-video'));
+    if (!info || !HOSTED) return;
+    stopVideo(sec);
+    var f = document.createElement('iframe');
+    f.src = info.embed(auto);
+    f.title = info.title || 'YouTube 영상';
+    f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.setAttribute('allowfullscreen', '');
+    sec.querySelector('[data-stage]').appendChild(f);
+  }
   function playVideo(sec, ev) {
     var vid = sec.getAttribute('data-video'), info = videoInfo(vid);
     if (!info) { if (ev) ev.preventDefault(); toast('E 키로 편집 모드를 켜고 YouTube 주소를 먼저 입력하세요'); return; }
     if (HOSTED) {
       if (ev) ev.preventDefault();
-      stopVideo(sec);
-      var f = document.createElement('iframe');
-      f.src = info.embed;
-      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
-      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-      f.setAttribute('allowfullscreen', '');
-      sec.querySelector('[data-stage]').appendChild(f);
+      loadPlayer(sec, true);
     }
     // 로컬 파일(file://)에서는 YouTube가 임베드 재생을 막으므로(Error 153) 링크가 새 창으로 열린다
   }
@@ -1109,7 +1125,15 @@ table.cmp.big td:first-child{width:170px;font-size:18px}
   }).then(function () {
     Reveal.addKeyBinding({ keyCode: 69, key: 'E', description: '편집 모드 (영상 주소·캡처)' }, toggleEdit);
   });
-  Reveal.on('slidechanged', function (ev) { stopVideo(ev.previousSlide); });
+  function prepare(slide) { if (slide && slide.hasAttribute('data-video')) loadPlayer(slide, false); }
+  Reveal.on('ready', function (ev) { prepare(ev.currentSlide); });
+  Reveal.on('slidechanged', function (ev) { stopVideo(ev.previousSlide); prepare(ev.currentSlide); });
+  Reveal.on('fragmentshown', function (ev) {
+    if (ev.fragment.classList.contains('play-trigger')) { var sec = ev.fragment.closest('section'); if (HOSTED) loadPlayer(sec, true); else { var a = sec.querySelector('[data-play]'); if (a && a.href && a.href.indexOf('youtube') > -1) window.open(a.href, '_blank'); } }
+  });
+  Reveal.on('fragmenthidden', function (ev) {
+    if (ev.fragment.classList.contains('play-trigger')) loadPlayer(ev.fragment.closest('section'), false);
+  });
 })();
 
 </script>
